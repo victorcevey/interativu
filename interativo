@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página Interativa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      margin-top: 20px;
+      transition: all 0.5s ease;
+    }
+
+    .animar {
+      transform: translateX(200px);
+      background-color: #e74c3c;
+    }
+
+    .novo-estilo {
+      color: #2c3e50;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">Bem-vindo à Página Interativa</h1>
+  <p id="descricao">Esta é uma demonstração de manipulação do DOM usando JavaScript.</p>
+
+  <button onclick="alterarTexto()">Alterar Texto</button>
+  <button id="botaoAdicionar">Adicionar Parágrafo</button>
+  <button id="botaoEstilo">Alterar Estilo</button>
+
+  <div id="caixa" class="box"></div>
+
+  <script>
+    // Seleção de elementos
+    const descricao = document.getElementById('descricao');
+    const botaoAdicionar = document.querySelector('#botaoAdicionar');
+    const botaoEstilo = document.querySelector('#botaoEstilo');
+    const caixa = document.querySelector('#caixa');
+
+    // Alterar o texto de um parágrafo ao clicar em um botão
+    function alterarTexto() {
+      descricao.textContent = 'O texto foi alterado com sucesso!';
+    }
+
+    // Criar e adicionar dinamicamente um novo parágrafo no corpo
+    botaoAdicionar.addEventListener('click', () => {
+      const novoParagrafo = document.createElement('p');
+      novoParagrafo.textContent = 'Este é um novo parágrafo adicionado dinamicamente.';
+      document.body.appendChild(novoParagrafo);
+
+      // Navegação no DOM
+      console.log('Pai do novo parágrafo:', novoParagrafo.parentNode);
+      console.log('Irmão anterior do novo parágrafo:', novoParagrafo.previousElementSibling);
+    });
+
+    // Manipular estilos e classes
+    botaoEstilo.addEventListener('click', () => {
+      descricao.classList.toggle('novo-estilo');
+      caixa.classList.toggle('animar');
+    });
+  </script>
+</body>
+</html>
